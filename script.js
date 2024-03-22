@@ -1,7 +1,22 @@
-let color = 'black'
+let color = "black";
+let click = false;
 document.addEventListener("DOMContentLoaded", function () {
+    creatBoard(16)
   selectSize();
-  
+
+  document.querySelector("body").addEventListener("click", function (e) {
+    if (e.target.ttagName != "BUTTON") {
+      click = !click;
+      let draw = document.querySelector(".draw");
+      if (click) {
+        draw.textContent = "You can draw now 🤗";
+        draw.style.fontSize = "20px"
+      } else {
+        draw.textContent = "You are not allowed to draw 😔";
+        draw.style.fontSize = "20px"
+      }
+    }
+  });
 });
 
 function creatBoard(size) {
@@ -15,7 +30,7 @@ function creatBoard(size) {
     let gridDiv = document.createElement("gridDiv");
     //gridDiv.classList.add("gridDivs");
     gridDiv.addEventListener("mouseover", colorDiv);
-    gridDiv.style.border = "1px solid black";
+    gridDiv.style.border = "1px solid lightgray";
     board.insertAdjacentElement("beforeend", gridDiv);
   }
 }
@@ -37,30 +52,32 @@ function getSize(size) {
     message.style.fontSize = "20px";
     return input;
   }
-  
 }
 
-function selectSize(){
-    let btnPopup = document.querySelector(".select-size")
-    btnPopup.addEventListener("click",function(){
-        let size = getSize();
-        creatBoard(size);
-
-    })
+function selectSize() {
+  let btnPopup = document.querySelector(".select-size");
+  btnPopup.addEventListener("click", function () {
+    let size = getSize();
+    creatBoard(size);
+  });
 }
-function colorDiv(){
-if (color == "random") {
-    this.style.backgroundColor =`hsl(${Math.random() * 300}, 100%, 50%)`
-}else {
-    this.style.backgroundColor = 'black';}
-}
-
-function setColor(colorChoice){
-    color = colorChoice;
+function colorDiv() {
+  if (click) {
+    if (color == "random") {
+      this.style.backgroundColor = `hsl(${Math.random() * 300}, 100%, 50%)`;
+    } else {
+      this.style.backgroundColor = "black";
+    }
+  }
 }
 
-function resetBoard(){
-    let resetBtn = document.querySelectorAll("gridDiv")
-    resetBtn.forEach((gridDiv) => {gridDiv.style.background = "white"});
-        
+function setColor(colorChoice) {
+  color = colorChoice;
+}
+
+function resetBoard() {
+  let resetBtn = document.querySelectorAll("gridDiv");
+  resetBtn.forEach((gridDiv) => {
+    gridDiv.style.background = "rgb(231, 229, 229)";
+  });
 }
