@@ -71,5 +71,7 @@ button:hover{
 .board{
     width: 600px;
     height: 600px;
+    display: grid;
     border: 1px solid black;
+    
 }
