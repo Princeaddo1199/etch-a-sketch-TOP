@@ -13,11 +13,12 @@
       <p class="txt">Select the size</p>
       <button class="select-size">Select</button>
     </div>
+    <p class="message"></p>
     <div class="buttons">
-      <button class="black-sketch">Black</button>
-      <button class="random">Random</button>
-      <button class="reset">Reset</button>
+      <button class="black-sketch" onclick="setColor('black')">Black</button>
+      <button class="random" onclick="setColor('random')">Random</button>
+      <button class="reset" onclick="resetBoard()">Reset</button>
     </div>
-    <div class="board"></div>
+    <div class="board" ></div>
   </body>
 </html>
